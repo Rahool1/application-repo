@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-app-server
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: notes-app-server
+  template:
+    metadata:
+      labels:
+        app: notes-app-server
+    spec:
+      containers:
+      - image: rahulpatil1992/notes-node-api:latest
+        name: notes-app-server
+        ports:
+        - containerPort: 3000
